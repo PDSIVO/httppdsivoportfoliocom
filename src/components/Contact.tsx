@@ -48,7 +48,7 @@ const Contact = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
 
       <div className="container relative">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
           <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">
             Get in touch
           </div>
@@ -63,7 +63,7 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-5 gap-6 lg:gap-10 items-start">
           {/* Channels */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-2 space-y-4" data-aos="fade-right">
             {channels.map((c) => (
               <a
                 key={c.label}
@@ -103,6 +103,7 @@ const Contact = () => {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
+            data-aos="fade-left"
             className="lg:col-span-3 p-6 lg:p-8 rounded-2xl border border-border bg-surface space-y-5"
           >
             <div className="grid sm:grid-cols-2 gap-5">
