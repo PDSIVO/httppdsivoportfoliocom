@@ -75,7 +75,7 @@ const Portfolio = () => {
               key={p.title}
               onClick={() => setActive(p)}
               data-aos="fade-up"
-              data-aos-delay={i * 100}
+              data-aos-delay={i * 150}
               className={`group lift-on-hover relative overflow-hidden rounded-2xl border border-border bg-surface text-left transition-all duration-500 hover:border-primary/60 hover:shadow-glow ${p.className}`}
             >
               <img
