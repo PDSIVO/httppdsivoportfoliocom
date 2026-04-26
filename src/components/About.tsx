@@ -50,7 +50,7 @@ const About = () => {
                 unmistakably theirs.
               </p>
               <p>
-                I work across brand identity, social media, UI/UX and print,
+                I work across brand identity, social media, and print,
                 blending sharp visual instincts with a structured, collaborative
                 process that keeps the work focused on outcomes — not just
                 aesthetics.

@@ -12,7 +12,7 @@ const skills = [
   { icon: Palette, name: "Brand Identity Design", level: 95 },
   { icon: Share2, name: "Social Media Design", level: 92 },
   { icon: FileText, name: "Flyer & Poster Design", level: 90 },
-  { icon: Layout, name: "UI/UX Design (Figma)", level: 85 },
+  { icon: Layout, name: "Interface Design (Figma)", level: 85 },
   { icon: Printer, name: "Print Design", level: 88 },
   { icon: PenTool, name: "Logo Design", level: 94 },
   { icon: CreditCard, name: "Business Card Design", level: 90 },
