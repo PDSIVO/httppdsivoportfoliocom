@@ -28,7 +28,7 @@ const Hero = () => {
           </h1>
 
           <p className="text-lg text-muted-foreground max-w-xl mb-3 font-medium">
-            Graphic Designer · Brand Identity & UI/UX Designer
+            Graphic Designer · Brand Identity Designer
           </p>
           <p className="text-base sm:text-lg text-muted-foreground/90 max-w-xl mb-10 leading-relaxed">
             I design clean, impactful visuals that help brands communicate
@@ -107,7 +107,7 @@ const Hero = () => {
               </div>
               <div className="text-xs">
                 <div className="font-medium">Figma Native</div>
-                <div className="text-muted-foreground">UI/UX Designer</div>
+                <div className="text-muted-foreground">Interface Designer</div>
               </div>
             </div>
           </div>

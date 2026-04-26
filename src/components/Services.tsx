@@ -18,7 +18,7 @@ const services = [
   },
   {
     icon: Layout,
-    title: "UI/UX Design",
+    title: "Interface Design",
     desc: "Clean, user-friendly interface designs for apps and websites — designed and prototyped in Figma.",
   },
   {
