@@ -53,7 +53,7 @@ const Portfolio = () => {
   return (
     <section id="work" className="py-24 lg:py-32 bg-surface/30 relative">
       <div className="container">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14" data-aos="fade-up">
           <div>
             <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">
               Selected Work
@@ -70,11 +70,13 @@ const Portfolio = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 lg:auto-rows-[260px] gap-5">
-          {projects.map((p) => (
+          {projects.map((p, i) => (
             <button
               key={p.title}
               onClick={() => setActive(p)}
-              className={`group relative overflow-hidden rounded-2xl border border-border bg-surface text-left transition-all duration-500 hover:border-primary/60 hover:shadow-glow ${p.className}`}
+              data-aos="fade-up"
+              data-aos-delay={i * 100}
+              className={`group lift-on-hover relative overflow-hidden rounded-2xl border border-border bg-surface text-left transition-all duration-500 hover:border-primary/60 hover:shadow-glow ${p.className}`}
             >
               <img
                 src={p.image}

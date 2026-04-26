@@ -22,7 +22,7 @@ const Skills = () => {
   return (
     <section id="skills" className="py-24 lg:py-32 bg-surface/30 relative">
       <div className="container">
-        <div className="max-w-2xl mb-16">
+        <div className="max-w-2xl mb-16" data-aos="fade-up">
           <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">
             Skills
           </div>
@@ -40,8 +40,9 @@ const Skills = () => {
           {skills.map((s, i) => (
             <div
               key={s.name}
-              className="group relative p-6 rounded-2xl border border-border bg-surface hover:border-primary/60 transition-all duration-500 hover:-translate-y-1 hover:shadow-glow-soft"
-              style={{ animationDelay: `${i * 50}ms` }}
+              data-aos="fade-up"
+              data-aos-delay={i * 60}
+              className="group relative p-6 rounded-2xl border border-border bg-surface hover:border-primary/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-soft"
             >
               <div className="absolute inset-0 rounded-2xl bg-gradient-blue opacity-0 group-hover:opacity-[0.06] transition-opacity" />
 

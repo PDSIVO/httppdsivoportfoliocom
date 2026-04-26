@@ -14,7 +14,7 @@ const About = () => {
       <div className="container">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           {/* Image */}
-          <div className="lg:col-span-5 order-2 lg:order-1">
+          <div className="lg:col-span-5 order-2 lg:order-1" data-aos="fade-right">
             <div className="relative">
               <div className="absolute -top-6 -left-6 w-32 h-32 border-2 border-primary/40 rounded-2xl" />
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-2xl" />
@@ -32,7 +32,7 @@ const About = () => {
           </div>
 
           {/* Text */}
-          <div className="lg:col-span-7 order-1 lg:order-2">
+          <div className="lg:col-span-7 order-1 lg:order-2" data-aos="fade-left">
             <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">
               About Me
             </div>
@@ -70,10 +70,12 @@ const About = () => {
             </div>
 
             <div className="mt-10 grid sm:grid-cols-2 gap-4">
-              {traits.map((t) => (
+              {traits.map((t, i) => (
                 <div
                   key={t.title}
-                  className="group p-4 rounded-xl border border-border bg-surface/40 hover:border-primary/50 hover:bg-surface transition-all duration-300"
+                  data-aos="fade-up"
+                  data-aos-delay={i * 80}
+                  className="group lift-on-hover p-4 rounded-xl border border-border bg-surface/40 hover:border-primary/50 hover:bg-surface transition-all duration-300"
                 >
                   <div className="flex items-start gap-3">
                     <div className="h-9 w-9 rounded-lg bg-primary/10 border border-primary/20 grid place-items-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">

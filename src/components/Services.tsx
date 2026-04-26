@@ -34,7 +34,7 @@ const Services = () => {
       <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
 
       <div className="container relative">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16" data-aos="fade-up">
           <div className="max-w-2xl">
             <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">
               Services
@@ -54,7 +54,9 @@ const Services = () => {
           {services.map((s, i) => (
             <div
               key={s.title}
-              className={`group relative p-7 lg:p-8 rounded-2xl border border-border bg-surface overflow-hidden transition-all duration-500 hover:border-primary/70 hover:shadow-glow ${
+              data-aos="zoom-in-up"
+              data-aos-delay={i * 80}
+              className={`group lift-on-hover relative p-7 lg:p-8 rounded-2xl border border-border bg-surface overflow-hidden transition-all duration-500 hover:border-primary/70 hover:shadow-glow ${
                 i === 0 ? "lg:row-span-1" : ""
               }`}
             >
