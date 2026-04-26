@@ -2,7 +2,6 @@ import {
   Palette,
   Share2,
   FileText,
-  Layout,
   Printer,
   PenTool,
   CreditCard,
