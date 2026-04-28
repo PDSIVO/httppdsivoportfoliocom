@@ -20,6 +20,7 @@ type Project = {
 };
 
 const projects: Project[] = [
+  // ── Social Media ─────────────────────────────────────────
   {
     title: "Food Brand Social Media Campaign",
     category: "Social Media",
@@ -31,32 +32,12 @@ const projects: Project[] = [
     className: "lg:col-span-2 lg:row-span-2",
   },
   {
-    title: "Business Brand Identity Design",
-    category: "Brand Identity",
-    image: projectBrand,
-    focus: "Professionalism & consistency",
-    description:
-      "Built a complete identity system — logo, color palette, typography and usage rules — giving the business a credible, consistent presence across every touchpoint.",
-    deliverables: ["Logo system", "Color palette", "Typography", "Brand guidelines"],
-    className: "lg:col-span-1",
-  },
-  {
-    title: "Event Flyer & Print Design",
-    category: "Print",
-    image: projectPrint,
-    focus: "Clarity & strong visual communication",
-    description:
-      "Designed flyers and print materials for events and promotions, balancing bold typography with structured layouts that read instantly from across a room.",
-    deliverables: ["Event flyers", "Posters", "Print collateral"],
-    className: "lg:col-span-1",
-  },
-  {
     title: "Imole Hairline — Brand Post",
     category: "Social Media",
     image: socialImole,
     focus: "Bold brand presence on social",
     description:
-      "Promotional social media design crafted to elevate the brand’s visual identity with strong typography, clean composition and a confident color story.",
+      "Promotional social media design crafted to elevate the brand's visual identity with strong typography, clean composition and a confident color story.",
     deliverables: ["Social post design", "Typography layout", "Brand visuals"],
     className: "lg:col-span-1",
   },
@@ -90,6 +71,29 @@ const projects: Project[] = [
     deliverables: ["Teaser post", "Typography focus", "Launch visuals"],
     className: "lg:col-span-1",
   },
+  // ── Brand Identity ───────────────────────────────────────
+  {
+    title: "Business Brand Identity Design",
+    category: "Brand Identity",
+    image: projectBrand,
+    focus: "Professionalism & consistency",
+    description:
+      "Built a complete identity system — logo, color palette, typography and usage rules — giving the business a credible, consistent presence across every touchpoint.",
+    deliverables: ["Logo system", "Color palette", "Typography", "Brand guidelines"],
+    className: "lg:col-span-1",
+  },
+  // ── Print ────────────────────────────────────────────────
+  {
+    title: "Event Flyer & Print Design",
+    category: "Print",
+    image: projectPrint,
+    focus: "Clarity & strong visual communication",
+    description:
+      "Designed flyers and print materials for events and promotions, balancing bold typography with structured layouts that read instantly from across a room.",
+    deliverables: ["Event flyers", "Posters", "Print collateral"],
+    className: "lg:col-span-1",
+  },
+  // ── Church Flyer ─────────────────────────────────────────
   {
     title: "Church Event Flyer",
     category: "Church Flyer",
@@ -101,6 +105,8 @@ const projects: Project[] = [
     className: "lg:col-span-1",
   },
 ];
+
+const categories = ["All", "Social Media", "Brand Identity", "Print", "Church Flyer"] as const;
 
 const Portfolio = () => {
   const [active, setActive] = useState<Project | null>(null);
