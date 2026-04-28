@@ -1,5 +1,5 @@
 import { GraduationCap, Target, Users, Zap } from "lucide-react";
-import portrait from "@/assets/pdsivo-portrait.jpg";
+import portrait from "@/assets/pdsivo-about.jpg";
 
 const traits = [
   { icon: Target, title: "Detail-focused", desc: "Pixel-precise execution on every element." },
