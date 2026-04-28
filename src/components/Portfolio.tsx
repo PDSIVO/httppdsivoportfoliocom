@@ -20,6 +20,7 @@ type Project = {
 };
 
 const projects: Project[] = [
+  // ── Social Media ─────────────────────────────────────────
   {
     title: "Food Brand Social Media Campaign",
     category: "Social Media",
@@ -31,32 +32,12 @@ const projects: Project[] = [
     className: "lg:col-span-2 lg:row-span-2",
   },
   {
-    title: "Business Brand Identity Design",
-    category: "Brand Identity",
-    image: projectBrand,
-    focus: "Professionalism & consistency",
-    description:
-      "Built a complete identity system — logo, color palette, typography and usage rules — giving the business a credible, consistent presence across every touchpoint.",
-    deliverables: ["Logo system", "Color palette", "Typography", "Brand guidelines"],
-    className: "lg:col-span-1",
-  },
-  {
-    title: "Event Flyer & Print Design",
-    category: "Print",
-    image: projectPrint,
-    focus: "Clarity & strong visual communication",
-    description:
-      "Designed flyers and print materials for events and promotions, balancing bold typography with structured layouts that read instantly from across a room.",
-    deliverables: ["Event flyers", "Posters", "Print collateral"],
-    className: "lg:col-span-1",
-  },
-  {
     title: "Imole Hairline — Brand Post",
     category: "Social Media",
     image: socialImole,
     focus: "Bold brand presence on social",
     description:
-      "Promotional social media design crafted to elevate the brand’s visual identity with strong typography, clean composition and a confident color story.",
+      "Promotional social media design crafted to elevate the brand's visual identity with strong typography, clean composition and a confident color story.",
     deliverables: ["Social post design", "Typography layout", "Brand visuals"],
     className: "lg:col-span-1",
   },
@@ -90,6 +71,29 @@ const projects: Project[] = [
     deliverables: ["Teaser post", "Typography focus", "Launch visuals"],
     className: "lg:col-span-1",
   },
+  // ── Brand Identity ───────────────────────────────────────
+  {
+    title: "Business Brand Identity Design",
+    category: "Brand Identity",
+    image: projectBrand,
+    focus: "Professionalism & consistency",
+    description:
+      "Built a complete identity system — logo, color palette, typography and usage rules — giving the business a credible, consistent presence across every touchpoint.",
+    deliverables: ["Logo system", "Color palette", "Typography", "Brand guidelines"],
+    className: "lg:col-span-1",
+  },
+  // ── Print ────────────────────────────────────────────────
+  {
+    title: "Event Flyer & Print Design",
+    category: "Print",
+    image: projectPrint,
+    focus: "Clarity & strong visual communication",
+    description:
+      "Designed flyers and print materials for events and promotions, balancing bold typography with structured layouts that read instantly from across a room.",
+    deliverables: ["Event flyers", "Posters", "Print collateral"],
+    className: "lg:col-span-1",
+  },
+  // ── Church Flyer ─────────────────────────────────────────
   {
     title: "Church Event Flyer",
     category: "Church Flyer",
@@ -102,13 +106,19 @@ const projects: Project[] = [
   },
 ];
 
+const categories = ["All", "Social Media", "Brand Identity", "Print", "Church Flyer"] as const;
+
 const Portfolio = () => {
   const [active, setActive] = useState<Project | null>(null);
+  const [filter, setFilter] = useState<(typeof categories)[number]>("All");
+
+  const visibleProjects =
+    filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
   return (
     <section id="work" className="py-24 lg:py-32 bg-surface/30 relative">
       <div className="container">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14" data-aos="fade-up">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10" data-aos="fade-up">
           <div>
             <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">
               Selected Work
@@ -124,8 +134,24 @@ const Portfolio = () => {
           </p>
         </div>
 
+        <div className="flex flex-wrap gap-2 mb-8" data-aos="fade-up">
+          {categories.map((c) => (
+            <button
+              key={c}
+              onClick={() => setFilter(c)}
+              className={`px-4 py-2 rounded-full text-xs uppercase tracking-widest border transition-all ${
+                filter === c
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-surface text-muted-foreground border-border hover:border-primary/60 hover:text-foreground"
+              }`}
+            >
+              {c}
+            </button>
+          ))}
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 lg:auto-rows-[260px] gap-5">
-          {projects.map((p, i) => (
+          {visibleProjects.map((p, i) => (
             <button
               key={p.title}
               onClick={() => setActive(p)}
