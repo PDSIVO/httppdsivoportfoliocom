@@ -110,11 +110,15 @@ const categories = ["All", "Social Media", "Brand Identity", "Print", "Church Fl
 
 const Portfolio = () => {
   const [active, setActive] = useState<Project | null>(null);
+  const [filter, setFilter] = useState<(typeof categories)[number]>("All");
+
+  const visibleProjects =
+    filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
   return (
     <section id="work" className="py-24 lg:py-32 bg-surface/30 relative">
       <div className="container">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14" data-aos="fade-up">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10" data-aos="fade-up">
           <div>
             <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">
               Selected Work
@@ -130,8 +134,24 @@ const Portfolio = () => {
           </p>
         </div>
 
+        <div className="flex flex-wrap gap-2 mb-8" data-aos="fade-up">
+          {categories.map((c) => (
+            <button
+              key={c}
+              onClick={() => setFilter(c)}
+              className={`px-4 py-2 rounded-full text-xs uppercase tracking-widest border transition-all ${
+                filter === c
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-surface text-muted-foreground border-border hover:border-primary/60 hover:text-foreground"
+              }`}
+            >
+              {c}
+            </button>
+          ))}
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 lg:auto-rows-[260px] gap-5">
-          {projects.map((p, i) => (
+          {visibleProjects.map((p, i) => (
             <button
               key={p.title}
               onClick={() => setActive(p)}
