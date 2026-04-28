@@ -3,6 +3,11 @@ import { ArrowUpRight, X } from "lucide-react";
 import projectFood from "@/assets/project-food.jpg";
 import projectBrand from "@/assets/project-brand.jpg";
 import projectPrint from "@/assets/project-print.jpg";
+import socialImole from "@/assets/social/imole-hairline.jpg";
+import socialPost2 from "@/assets/social/post-2.jpg";
+import socialPost3 from "@/assets/social/post-3.jpg";
+import socialAnticipate from "@/assets/social/anticipate.jpg";
+import churchFlyer1 from "@/assets/social/church-flyer-1.jpg";
 
 type Project = {
   title: string;
@@ -43,6 +48,56 @@ const projects: Project[] = [
     description:
       "Designed flyers and print materials for events and promotions, balancing bold typography with structured layouts that read instantly from across a room.",
     deliverables: ["Event flyers", "Posters", "Print collateral"],
+    className: "lg:col-span-1",
+  },
+  {
+    title: "Imole Hairline — Brand Post",
+    category: "Social Media",
+    image: socialImole,
+    focus: "Bold brand presence on social",
+    description:
+      "Promotional social media design crafted to elevate the brand’s visual identity with strong typography, clean composition and a confident color story.",
+    deliverables: ["Social post design", "Typography layout", "Brand visuals"],
+    className: "lg:col-span-1",
+  },
+  {
+    title: "Promotional Social Post",
+    category: "Social Media",
+    image: socialPost2,
+    focus: "Eye-catching feed design",
+    description:
+      "A scroll-stopping promotional post designed with clear hierarchy and strong visual impact, built to perform across Instagram and other social platforms.",
+    deliverables: ["Post design", "Layout system", "Visual styling"],
+    className: "lg:col-span-1",
+  },
+  {
+    title: "Brand Campaign Post",
+    category: "Social Media",
+    image: socialPost3,
+    focus: "Consistent brand storytelling",
+    description:
+      "Campaign-style social post focused on visual consistency, brand tone, and clear messaging — designed to engage followers and reinforce brand recall.",
+    deliverables: ["Campaign visuals", "Post template", "Brand alignment"],
+    className: "lg:col-span-1",
+  },
+  {
+    title: "Anticipate — Teaser Design",
+    category: "Social Media",
+    image: socialAnticipate,
+    focus: "Build-up & audience curiosity",
+    description:
+      "An anticipation-style teaser post designed to build excitement before a launch or event — bold lettering, strong contrast and a hook-first layout.",
+    deliverables: ["Teaser post", "Typography focus", "Launch visuals"],
+    className: "lg:col-span-1",
+  },
+  {
+    title: "Church Event Flyer",
+    category: "Church Flyer",
+    image: churchFlyer1,
+    focus: "Spiritual tone & clear event details",
+    description:
+      "A church flyer designed with a reverent, welcoming aesthetic — balancing clear event information with imagery and typography that reflects the message of the program.",
+    deliverables: ["Event flyer", "Typography", "Print-ready layout"],
     className: "lg:col-span-1",
   },
 ];
