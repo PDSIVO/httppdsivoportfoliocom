@@ -9,6 +9,8 @@ import ch2 from "@/assets/church/ch-2.jpg";
 import ch3 from "@/assets/church/ch-3.jpg";
 import ch4 from "@/assets/church/ch-4.jpg";
 import brand1 from "@/assets/brand/brand-1.jpg";
+import brand2 from "@/assets/brand/brand-2.jpg";
+import brand3 from "@/assets/brand/brand-3.jpg";
 import biz1 from "@/assets/business/biz-1.jpg";
 
 type Project = {
@@ -50,7 +52,11 @@ const sections: Section[] = [
     id: "brand-identity",
     title: "Brand Identity Design",
     subtitle: "Logo systems and visual identities that build trust and recall.",
-    projects: [{ title: "Annie — Logo Mockup", image: brand1 }],
+    projects: [
+      { title: "Annie — Logo Mockup", image: brand1 },
+      { title: "Brand Identity Concept", image: brand2 },
+      { title: "Logo Presentation Mockup", image: brand3 },
+    ],
   },
   {
     id: "business-card",
