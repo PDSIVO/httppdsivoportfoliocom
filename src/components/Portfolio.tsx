@@ -33,7 +33,6 @@ const sections: Section[] = [
     projects: [
       { title: "Imole Hairline — Brand Post", image: sm1 },
       { title: "Promotional Social Post", image: sm2 },
-      { title: "Mr. Segun Computer Company", image: sm3 },
       { title: "Brand Campaign Post", image: sm4 },
     ],
   },
