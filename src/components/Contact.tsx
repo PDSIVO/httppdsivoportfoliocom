@@ -2,6 +2,14 @@ import { useState } from "react";
 import { Mail, Phone, Instagram, Send, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
+
+const messageSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100),
+  email: z.string().trim().email("Enter a valid email").max(255),
+  message: z.string().trim().min(1, "Message is required").max(2000),
+});
 
 const channels = [
   {
@@ -28,19 +36,25 @@ const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const parsed = messageSchema.safeParse(form);
+    if (!parsed.success) {
+      toast.error(parsed.error.issues[0].message);
+      return;
+    }
     setSending(true);
-    const subject = encodeURIComponent(`New project enquiry from ${form.name}`);
-    const body = encodeURIComponent(
-      `Hi PDSIVO,\n\n${form.message}\n\n— ${form.name}\n${form.email}`
-    );
-    window.location.href = `mailto:pdsivo1@gmail.com?subject=${subject}&body=${body}`;
-    setTimeout(() => {
-      toast.success("Opening your email — talk soon!");
-      setSending(false);
-      setForm({ name: "", email: "", message: "" });
-    }, 600);
+    const { name, email, message } = parsed.data;
+    const { error } = await supabase
+      .from("contact_messages")
+      .insert({ name: name!, email: email!, message: message! });
+    setSending(false);
+    if (error) {
+      toast.error("Couldn't send message. Please try again.");
+      return;
+    }
+    toast.success("Message sent — I'll get back to you within 24 hours!");
+    setForm({ name: "", email: "", message: "" });
   };
 
   return (
