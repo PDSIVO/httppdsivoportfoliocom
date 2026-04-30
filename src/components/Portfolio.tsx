@@ -1,19 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowUpRight, X } from "lucide-react";
-import sm1 from "@/assets/social/sm-1.jpg";
-import sm2 from "@/assets/social/sm-2.jpg";
-import sm3 from "@/assets/social/sm-3.jpg";
-import sm4 from "@/assets/social/sm-4.jpg";
-import ch1 from "@/assets/church/ch-1.jpg";
-import ch2 from "@/assets/church/ch-2.jpg";
-import ch3 from "@/assets/church/ch-3.jpg";
-import ch4 from "@/assets/church/ch-4.jpg";
-import brand1 from "@/assets/brand/brand-1.jpg";
-import brand2 from "@/assets/brand/brand-2.jpg";
-import brand3 from "@/assets/brand/brand-3.jpg";
-import biz1 from "@/assets/business/biz-1.jpg";
+import { supabase } from "@/integrations/supabase/client";
+import { resolveImage } from "@/lib/portfolioAssets";
 
 type Project = {
+  id: string;
   title: string;
   image: string;
 };
@@ -25,48 +16,28 @@ type Section = {
   projects: Project[];
 };
 
-const sections: Section[] = [
-  {
-    id: "social-media",
-    title: "Social Media Post Designs",
-    subtitle: "Scroll-stopping posts crafted to grow brands and drive engagement.",
-    projects: [
-      { title: "Imole Hairline — Brand Post", image: sm1 },
-      { title: "Promotional Social Post", image: sm2 },
-      { title: "Brand Campaign Post", image: sm4 },
-    ],
-  },
-  {
-    id: "church-media",
-    title: "Church Media Post Designs",
-    subtitle: "Reverent, welcoming flyers built around clarity and message.",
-    projects: [
-      { title: "Church Event Flyer", image: ch1 },
-      { title: "Sunday Service Design", image: ch2 },
-      { title: "The Glorious Family Ministries", image: ch3 },
-      { title: "Church Program Flyer", image: ch4 },
-    ],
-  },
-  {
-    id: "brand-identity",
-    title: "Brand Identity Design",
-    subtitle: "Logo systems and visual identities that build trust and recall.",
-    projects: [
-      { title: "Annie — Logo Mockup", image: brand1 },
-      { title: "Brand Identity Concept", image: brand2 },
-      { title: "Logo Presentation Mockup", image: brand3 },
-    ],
-  },
-  {
-    id: "business-card",
-    title: "Business Card Design",
-    subtitle: "Professional, print-ready cards that leave a lasting impression.",
-    projects: [{ title: "Business Card Design", image: biz1 }],
-  },
-];
-
 const Portfolio = () => {
   const [active, setActive] = useState<(Project & { section: string }) | null>(null);
+  const [sections, setSections] = useState<Section[]>([]);
+
+  useEffect(() => {
+    const load = async () => {
+      const [s, p] = await Promise.all([
+        supabase.from("portfolio_sections").select("*").order("sort_order"),
+        supabase.from("portfolio_projects").select("*").order("sort_order"),
+      ]);
+      const built: Section[] = (s.data ?? []).map((sec) => ({
+        id: sec.id,
+        title: sec.title,
+        subtitle: sec.subtitle,
+        projects: (p.data ?? [])
+          .filter((pr) => pr.section_id === sec.id)
+          .map((pr) => ({ id: pr.id, title: pr.title, image: resolveImage(pr.image_url) })),
+      }));
+      setSections(built);
+    };
+    load();
+  }, []);
 
   return (
     <section id="work" className="py-24 lg:py-32 bg-surface/30 relative">
@@ -115,7 +86,7 @@ const Portfolio = () => {
               >
                 {section.projects.map((p, i) => (
                   <button
-                    key={p.title}
+                    key={p.id}
                     onClick={() => setActive({ ...p, section: section.title })}
                     data-aos="fade-up"
                     data-aos-delay={i * 120}
